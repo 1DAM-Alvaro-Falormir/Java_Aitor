@@ -78,23 +78,38 @@ public class function {
     
     public static int kWConsumidos(int c){
         Scanner sc = new Scanner(System.in);
-        
+        boolean listo = false;
         System.out.print("Digame el total de kW consumidos en el mes: ");
         c = sc.nextInt();
-        
+        if (c > 0)
+            listo = true;
+        else{
+            do{
+                System.out.println("El numero de Kw consumidos no puede ser menor a 0");
+                c = sc.nextInt();
+                if(c > 0)
+                    listo = true;
+                    
+            }while(listo == false);
+        }                   
         return c;
     }
     
     public static double calcularImporte(int c, double p){
-        double total;
-        switch(c){
-            case
-        }
-        
+        return c + p;
     }
     
     public static double calcularIncremento(int c){
-        
+        double incremento = 0;
+        if (c <= 150)
+            incremento = 0;
+        else if (c <= 300)
+            incremento = 0.05;
+        else if (c <= 400)
+            incremento = 0.08;
+        else 
+            incremento = 0.12;
+        return incremento;
     }
     
 }
