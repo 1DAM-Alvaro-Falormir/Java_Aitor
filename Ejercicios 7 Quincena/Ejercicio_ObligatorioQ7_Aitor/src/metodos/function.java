@@ -12,22 +12,33 @@ import java.util.regex.Pattern;
  */
 public class function {
     
+    /**
+     * 
+     * @param d
+     * @return 
+     */
+    
     public static String numeroContrato(String d){
         Scanner sc = new Scanner(System.in);
         Pattern valid = Pattern.compile("^\\d{3}-\\d{4}$");
+        boolean sigue = false;
         
         System.out.print("Introduzca su numero de contrato, tiene que tener\n"
                         +"el siguiente formato(ddd-dddd) donde d es un numero: ");
         d = sc.nextLine();
         if (valid.matcher(d).matches()){
-            return d;
+            System.out.println("Formato correcto.");
         }
         else{
             do{
+                System.out.println("No es un formato correcto, introducelo de nuevo.");
+                d = sc.nextLine();
+                if (valid.matcher(d).matches())
+                    sigue = true;
                 
-            }while()
+            }while(sigue == false);
         }
-        
+        return d;
     }
     
     public static double potenciaContrato(double p){
