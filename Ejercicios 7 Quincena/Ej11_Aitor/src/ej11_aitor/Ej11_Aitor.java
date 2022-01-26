@@ -12,7 +12,7 @@ import java.util.Scanner;
  * parámetro un número entero y muestre por pantalla la tabla de multiplicar de
  * dicho número.
 
- * @author aitgal
+ * @author Aitor
  */
 public class Ej11_Aitor {
 
