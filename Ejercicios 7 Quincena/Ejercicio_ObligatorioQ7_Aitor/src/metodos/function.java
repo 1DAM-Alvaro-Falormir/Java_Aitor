@@ -13,13 +13,13 @@ import java.util.regex.Pattern;
 public class function {
     
     /**
-     * 
-     * @param d
-     * @return 
+     * Metodo para pedir el número de contrato.
+     * @return Devuelve un String con el número de contrato.
      */
     
-    public static String numeroContrato(String d){
+    public static String numeroContrato(){
         Scanner sc = new Scanner(System.in);
+        String d;
         Pattern valid = Pattern.compile("^\\d{3}-\\d{4}$");
         boolean sigue = false;
         
@@ -41,31 +41,42 @@ public class function {
         return d;
     }
     
-    public static double potenciaContrato(double p){
+    /**
+     * Metodo para pedir la potencia contratada.
+     * @return Devuelve el precio segun la tarifa introducida.
+     */
+    
+    public static double precioContrato(){
         Scanner sc = new Scanner(System.in);
         boolean listo = false;
+        double tarifa = 0, p = 0;
         System.out.println("Digame su potencia contratada. Aqui tiene una tabla:\n"
-                + " 3,45\n"
-                + " 4,60\n"
-                + " 5,75\n"
-                + " 6,90\n"
-                + " 8,05");
+                + " 3.45\n"
+                + " 4.60\n"
+                + " 5.75\n"
+                + " 6.90\n"
+                + " 8.05");
         p = sc.nextDouble();
         do{
             if (p == 3.45){
                 listo = true;
+                tarifa = 10.23;
             }
             else if (p == 4.60){
                 listo = true;
+                tarifa = 14.45;
             }
             else if (p == 5.75){
                 listo = true;
+                tarifa = 18.69;
             }
             else if (p == 6.90){
                 listo = true;
+                tarifa = 21.34;
             }
             else if (p == 8.05){
                 listo = true;
+                tarifa = 25.99;
             }
             else{
                 System.out.println("No existe ese plan. Introduce el plan de nuevo: ");
@@ -73,12 +84,40 @@ public class function {
                 listo = false;
             }
         }while(listo == false);        
-        return p;
+        return tarifa;
     }
     
-    public static int kWConsumidos(int c){
+    /**
+     * Metodo para conseguir la potencia contratada
+     * @param p Argumento donde se introduce la tarifa de la potencia contratada
+     * @return devuelve la potencia contratada.
+     */
+    
+    public static double potenciaContrato(double p){
+        double tarifa = 0;
+        
+        if (p == 10.23)
+            tarifa = 3.45;
+        else if (p == 14.45)
+            tarifa = 4.60;
+        else if (p == 18.69)
+            tarifa = 5.75;
+        else if (p == 21.34)
+            tarifa = 6.90;
+        else if (p == 25.99)
+            tarifa = 8.05;
+        return tarifa;
+    }
+    
+    /**
+     * Metodo para pedir los kW consumidos.
+     * @return Devuelve los kW consumidos en el mes.
+     */
+    
+    public static int kWConsumidos(){
         Scanner sc = new Scanner(System.in);
         boolean listo = false;
+        int c;
         System.out.print("Digame el total de kW consumidos en el mes: ");
         c = sc.nextInt();
         if (c > 0)
@@ -95,9 +134,27 @@ public class function {
         return c;
     }
     
+    /**
+     * Metodo para calcular el importe según loos kW consumidos y la potencia contratada.
+     * @param c Argumento para introducir los kW consumidos.
+     * @param p Argumento para introducir el precio de la potencia contratada.
+     * @return Devuelve el importe a pagar sin el incremento.
+     */
+    
     public static double calcularImporte(int c, double p){
-        return c + p;
+        double kwh = 0.1684, consumo;
+        consumo = c * kwh;
+        
+        return consumo + p;
+        
+        
     }
+    
+    /**
+     * Metodo para calcular el incremento
+     * @param c Argumento para introducir los kW consumidos.
+     * @return Devuelve el incremento.
+     */
     
     public static double calcularIncremento(int c){
         double incremento = 0;
@@ -110,6 +167,14 @@ public class function {
         else 
             incremento = 0.12;
         return incremento;
+    }
+    
+    public static double precioAPagar(double inc, double imp){
+        double incremento;
+        
+        incremento = inc * imp;
+        
+        return incremento + imp;
     }
     
 }
