@@ -34,6 +34,7 @@ public class Ej13_Aitor {
     
     
     public static double calcularPorcentaje(double init, double pagado){
-        return (pagado * 100)/ init;
+        double porciento = (pagado * 100) / init;
+        return 100 - porciento;
     }
 }
