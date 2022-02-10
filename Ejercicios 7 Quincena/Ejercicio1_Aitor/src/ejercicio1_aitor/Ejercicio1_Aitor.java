@@ -48,9 +48,3 @@ public class Ejercicio1_Aitor {
     }
     
 }
-
-class Punto{
-    int x;
-    int y;
-    
-}
