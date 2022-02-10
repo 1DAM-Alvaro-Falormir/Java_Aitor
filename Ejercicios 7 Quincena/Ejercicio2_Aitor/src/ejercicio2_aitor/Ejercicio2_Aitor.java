@@ -61,10 +61,3 @@ public class Ejercicio2_Aitor {
     }
     
 }
-
-class Persona{
-    String dni;
-    String nombre;
-    String apellidos;
-    int edad;
-}
