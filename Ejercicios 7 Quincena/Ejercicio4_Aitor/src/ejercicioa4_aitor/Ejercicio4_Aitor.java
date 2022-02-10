@@ -30,10 +30,3 @@ public class Ejercicio4_Aitor {
     }
     
 }
-
-class Articulo{
-    String nombre;
-    double precio;//Sin IVA
-    final double iva = 21;
-    int cuantosQuedan;
-}
