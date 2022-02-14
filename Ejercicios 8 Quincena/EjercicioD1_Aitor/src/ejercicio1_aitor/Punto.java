@@ -34,7 +34,7 @@ public class Punto {
     }
     
     public void imprime(){
-        System.out.println("("+this.getX()+", "+this.getY()+")");
+        System.out.println("("+this.x+", "+this.y+")");
     }
     
     public void setXY(int x, int y){
