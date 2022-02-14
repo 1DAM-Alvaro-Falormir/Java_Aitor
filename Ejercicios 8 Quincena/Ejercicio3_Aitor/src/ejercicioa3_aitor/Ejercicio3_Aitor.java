@@ -33,10 +33,10 @@ public class Ejercicio3_Aitor {
         r2.y1 = 9;
         r2.y2 = 3;
         
-        System.out.println("Las cordenadas del rectangulo1 son: ("+r1.x1+","+r1.x2+") y ("+r1.y1+","+r1.y2+")");
-        System.out.println("Las cordenadas del rectangulo2 son: ("+r2.x1+","+r2.x2+") y ("+r2.y1+","+r2.y2+")");
-        System.out.println("El pemiremetro del rectangulo1 es: "+(2*(r1.x1-r1.x2)+(r1.y1-r1.y2)*2)+" y del rectangulo2 es: "+(2*(r2.x1-r2.x2)+(r2.y1-r2.y2)*2));
-        System.out.println("El area del rectangulo1 es: "+((r1.x1-r1.x2)*(r1.y1+r1.y2))+" y del rectangulo2 es: "+((r2.x1-r2.y1)*(r2.y2-r2.x2)));
+        System.out.println("Las cordenadas del rectangulo1 son: ("+r1.x1+","+r1.y1+") y ("+r1.x2+","+r1.y2+")");
+        System.out.println("Las cordenadas del rectangulo2 son: ("+r2.x1+","+r2.y1+") y ("+r2.x2+","+r2.y2+")");
+        System.out.println("El pemiremetro del rectangulo1 es: "+perimetro(r1)+" y del rectangulo2 es: "+perimetro(r2));
+        System.out.println("El area del rectangulo1 es: "+area(r1)+" y del rectangulo2 es: "+area(r2));
         
         r1.x1 = 3;
         r1.x2 = 4;
@@ -47,10 +47,22 @@ public class Ejercicio3_Aitor {
         r2.y1 = 5;
         r2.y2 = 6;
         
-        System.out.println("Las cordenadas del rectangulo1 son: ("+r1.x1+","+r1.x2+") y ("+r1.y1+","+r1.y2+")");
-        System.out.println("Las cordenadas del rectangulo2 son: ("+r2.x1+","+r2.x2+") y ("+r2.y1+","+r2.y2+")");
-        System.out.println("El pemiremetro del rectangulo1 es: "+(r1.x1+r1.x2+r1.y1+r1.y2)+" y del rectangulo2 es: "+(r2.x1+r2.x2+r2.y1+r2.y2));
-        System.out.println("El area del rectangulo1 es: "+((r1.x1+r1.x2)*(r1.y1+r1.y2))+" y del rectangulo2 es: "+((r2.x1+r2.x2)*(r2.y1+r2.y2)));
+        System.out.println("Las cordenadas del rectangulo1 son: ("+r1.x1+","+r1.y1+") y ("+r1.x2+","+r1.y2+")");
+        System.out.println("Las cordenadas del rectangulo2 son: ("+r2.x1+","+r2.y1+") y ("+r2.x2+","+r2.y2+")");
+        System.out.println("El pemiremetro del rectangulo1 es: "+perimetro(r1)+" y del rectangulo2 es: "+perimetro(r2));
+        System.out.println("El area del rectangulo1 es: "+area(r1)+" y del rectangulo2 es: "+area(r2));
+    }
+    
+    public static int perimetro(Rectangulo r){
+        int lado1 = Math.abs(r.x1 - r.x2);
+        int lado2 = Math.abs(r.y1 - r.y2);
+        return ((lado1 + lado2) * 2);
+    }
+    
+    public static int area(Rectangulo r){
+        int lado1 = Math.abs(r.x1 - r.x2);
+        int lado2 = Math.abs(r.y1 - r.y2);
+        return lado1 * lado2;
     }
     
 }
