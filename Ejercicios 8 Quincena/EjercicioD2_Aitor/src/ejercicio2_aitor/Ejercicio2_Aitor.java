@@ -48,21 +48,17 @@ public class Ejercicio2_Aitor {
         edad = sc.nextInt();
         persona2 = new Persona(dni, nombre, apellidos, edad);
         
-        if(persona1.getEdad() >= 18 && persona2.getEdad() >= 18){
-            System.out.println(persona1.getNombre()+" "+persona1.getApellidos()+" con DNI "+persona1.getDni()+" es mayor de edad");
-            System.out.println(persona2.getNombre()+" "+persona2.getApellidos()+" con DNI "+persona2.getDni()+" es mayor de edad");
-        }
-        else if(persona1.getEdad() >= 18 && persona2.getEdad() < 18){
-            System.out.println(persona1.getNombre()+" "+persona1.getApellidos()+" con DNI "+persona1.getDni()+" es mayor de edad");
-            System.out.println(persona2.getNombre()+" "+persona2.getApellidos()+" con DNI "+persona2.getDni()+" no es mayor de edad");
-        }
-        else if(persona1.getEdad() < 18 && persona2.getEdad() >= 18){
-            System.out.println(persona1.getNombre()+" "+persona1.getApellidos()+" con DNI "+persona1.getDni()+" no es mayor de edad");
-            System.out.println(persona2.getNombre()+" "+persona2.getApellidos()+" con DNI "+persona2.getDni()+" es mayor de edad");
-        }else{
-            System.out.println(persona1.getNombre()+" "+persona1.getApellidos()+" con DNI "+persona1.getDni()+" no es mayor de edad");
-            System.out.println(persona2.getNombre()+" "+persona2.getApellidos()+" con DNI "+persona2.getDni()+" no es mayor de edad");
-        }
+        System.out.println("----------");
+        persona1.imprime();
+        System.out.println("Es mayor de edad: "+persona1.esMayorEdad());
+        System.out.println("Es jubilado: "+persona1.esJubilado());
+        System.out.println("----------");
+        persona2.imprime();
+        System.out.println("Es mayor de edad: "+persona2.esMayorEdad());
+        System.out.println("Es jubilado: "+persona2.esJubilado());
+        System.out.println("----------");
+        System.out.println("La diferecia de edad es de: "+persona1.diferenciaEdad(persona2)+" años");
+        
     }
     
 }
