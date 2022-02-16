@@ -1,0 +1,36 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package ejercicioa4_aitor;
+
+/**
+ * Crea un programa con una clase llamada Articulo con los siguientes atributos:
+ * nombre, precio (sin IVA), iva (siempre será 21) y cuantosQuedan (representa
+ * cuantos quedan en el almacén). En el main de la clase principal instancia un
+ * objeto de la clase artículo. Asígnale valores a todos sus atributos (los que
+ * quieras) y muestra por pantalla un mensaje del estilo “Pijama -
+ * Precio:10€ - IVA:21% - PVP:12,1€” (el PVP es el precio de venta al público, es
+ * decir, el precio con IVA). Luego, cambia el precio y vuelve a imprimir el
+ * mensaje.
+ * 
+ * @author Aitor
+ */
+public class Ejercicio4_Aitor {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        Articulo artc = new Articulo("Pijama", 10, 0.21, 1);
+        
+        artc.imprimir();
+        
+        System.out.println("PVP: "+artc.getPVP());
+        System.out.println("50% descuento: "+artc.getPVPDescuento(50));
+        System.out.println("Vendidos: "+artc.vender(1));
+        System.out.println("Vendidos: "+artc.vender(2));
+        System.out.println("Almacenados: "+artc.almacenar(5));
+    }
+    
+}
