@@ -65,6 +65,8 @@ public class Tablero {
         } else if (tablero[index1][index2] == '-') {
             System.out.println("\nAgua\n");
             usuario[index1][index2] = 'A';
+        } else if (tablero[index1][index2] == 'L' || tablero[index1][index2] == 'A' || tablero[index1][index2] == 'B' || tablero[index1][index2] == 'Z' || tablero[index1][index2] == 'P') {
+            return -1;
         }
         return 0;
     }
