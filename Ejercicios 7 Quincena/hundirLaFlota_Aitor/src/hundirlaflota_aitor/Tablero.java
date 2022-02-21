@@ -102,6 +102,8 @@ public class Tablero {
      */
 
     public static int comprobarDisparo(int[] index, char[][] tablero, char[][] usuario) {
+        int contar = 0;
+        
         if ((tablero[index[0]][index[1]] == 'L') && (usuario[index[0]][index[1]] == '-')) {
             System.out.println("\nTocado\n");
             usuario[index[0]][index[1]] = 'X';
@@ -118,8 +120,8 @@ public class Tablero {
             System.out.println("\nAgua\n");
             usuario[index[0]][index[1]] = 'A';
         } else if (usuario[index[0]][index[1]] == 'X' || usuario[index[0]][index[1]] == 'A') {
-            return -1;
+            contar = -1;
         }
-        return 0;
+        return contar;
     }
 }
