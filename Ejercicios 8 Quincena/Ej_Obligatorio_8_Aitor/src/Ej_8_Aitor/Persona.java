@@ -10,7 +10,8 @@ package Ej_8_Aitor;
  */
 public class Persona {
     private final String dni;
-    private Cuenta cuentasBank[] = new Cuenta[3];
+    private int numCuentas = 0;
+    private Cuenta cuentasBank[]  = new Cuenta[3];
     
     
     public Persona(String dni){
@@ -21,8 +22,13 @@ public class Persona {
         return dni;
     }
     
-    public void setCuentaBank(Cuenta cuentaBank, int i){
-        this.cuentasBank[i] = cuentaBank;
+    public void setCuentaBank(Cuenta cuentaBank){
+        this.cuentasBank[numCuentas] = cuentaBank;
+        numCuentas++;
+    }
+    
+    public int getCuentasLength(){
+        return cuentasBank.length;
     }
     
     public boolean morosa(){
@@ -46,7 +52,27 @@ public class Persona {
         return corr;
     }
     
-    public int getCuentasBankLength(){
-        return cuentasBank.length;
+    public void getDatos(){
+        System.out.println("Este es el dni de la persona: "+this.getDni());
+        for (int i = 0; i < numCuentas; i++) {
+            System.out.println("Este es el IBAN de la cuenta numero "+(i+1)+": "+cuentasBank[i].getIban()+" y este es el saldo: "+cuentasBank[i].getSaldo());
+        }
     }
+    
+    public void setNomina(String iban, double nomina){
+        for (int i = 0; i < numCuentas; i++) {
+            if(this.cuentasBank[i].getIban().matches(iban)){
+                this.cuentasBank[i].recibirAbonos(nomina);
+            }
+        }
+    }
+    
+    public void setPago(String iban, double pago){
+        for (int i = 0; i < numCuentas; i++) {
+            if(this.cuentasBank[i].getIban().matches(iban)){
+                this.cuentasBank[i].pagarRecibos(pago);
+            }
+        }
+    }
+    
 }

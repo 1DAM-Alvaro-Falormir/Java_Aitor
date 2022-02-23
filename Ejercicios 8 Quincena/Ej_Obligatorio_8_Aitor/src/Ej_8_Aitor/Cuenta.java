@@ -37,7 +37,7 @@ public class Cuenta {
     }
     
     public void recibirAbonos(double abonos){
-        this.iban += abonos;
+        this.saldo += abonos;
     }
     
     public void pagarRecibos(double recibos){

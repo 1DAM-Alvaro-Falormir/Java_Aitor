@@ -19,8 +19,8 @@ public class PruebaCuentas {
         Scanner sc = new Scanner(System.in);
         String dni, iban;
         boolean corr = false, ext = false, cuentaSeguir = true;
-        int opcion, numero, index = 0, cont, i = 0;
-        double saldo;
+        int opcion, numero, index = 0, cont, i = 0, indexc = 0;
+        double saldo, nomina;
         Persona p[];
         Cuenta c = null;
         char salir = 'N';
@@ -61,7 +61,7 @@ public class PruebaCuentas {
                 case 2:
                     i = 0;
                     System.out.println("Una persona solo puede tener 3 cuentas bancarias como maximo.");
-                    while (i < p[0].getCuentasBankLength() && cuentaSeguir) {
+                    while (i < p[0].getCuentasLength() && cuentaSeguir) {
                         System.out.println("Introduzca el IBAN de la cuenta bancaria.");
                         do {
                             iban = sc.next();
@@ -72,7 +72,7 @@ public class PruebaCuentas {
                             }
                         } while (!corr);
                         do {
-                            System.out.println("digame el dni de la pesona a la que le va a asociar la cuenta bancaria.");
+                            System.out.println("digame el DNI de la pesona a la que le va a asociar la cuenta bancaria.");
                             dni = sc.next();
                             corr = Persona.comprobarDNI(dni);
                             if (!corr) {
@@ -89,56 +89,137 @@ public class PruebaCuentas {
                             }
                             cont++;
                         }
-                        cont = 0;
-                        System.out.println("Es esta su primera cuenta bancaria? S/n");
+                        System.out.println("La cuenta que va a introducir tiene saldo? s/N");
+                        salir = sc.next().charAt(0);
+                        if (salir == 'N' || salir == 'n') {
+                            c = new Cuenta(iban, 0);
+                            p[index].setCuentaBank(c);
+                        } else {
+                            System.out.println("Introduce el saldo de la cuenta.");
+                            saldo = sc.nextDouble();
+                            c = new Cuenta(iban, saldo);
+                            p[index].setCuentaBank(c);
+                        }
+                        System.out.println("Quieres seguir introduciendo cuentas? S/n");
                         salir = sc.next().charAt(0);
                         if (salir == 'S' || salir == 's') {
-                            System.out.println("La cuenta que va a introducir tiene saldo? s/N");
-                            salir = sc.next().charAt(0);
-                            if (salir == 'N' || salir == 'n') {
-                                instanciarCuenta(c, iban, 0);
-                                p[index].setCuentaBank(c, cont);
-                            } else {
-                                System.out.println("Introduce el saldo de la cuenta.");
-                                saldo = sc.nextDouble();
-                                instanciarCuenta(c, iban, saldo);
-                                p[index].setCuentaBank(c, cont);
-                            }
+                            cuentaSeguir = true;
                         } else {
-                            do {
-                                System.out.println("digame si es su segunda o tercera cuenta bancaria.");
-                                cont = sc.nextInt();
-                                if (cont == 2 || cont == 3) {
-                                    cont--;
-                                    System.out.println("La cuenta que va a introducir tiene saldo? s/N");
-                                    salir = sc.next().charAt(0);
-                                    if (salir == 'N' || salir == 'n') {
-                                        instanciarCuenta(c, iban, 0);
-                                        p[index].setCuentaBank(c, cont);
-                                    } else {
-                                        System.out.println("Introduce el saldo de la cuenta.");
-                                        saldo = sc.nextDouble();
-                                        instanciarCuenta(c, iban, saldo);
-                                        p[index].setCuentaBank(c, cont);
-                                    }
-                                } else {
-                                    System.err.println("El numero tiene que ser 2 o 3");
-                                }
-                            } while (cont != 1 || cont != 2 || cont != 3);
-
+                            cuentaSeguir = false;
                         }
-
                     }
+                    break;
+                case 3:
+                    do {
+                        System.out.println("digame el DNI de la pesona de la que se le van a mostrar los datos.");
+                        dni = sc.next();
+                        corr = Persona.comprobarDNI(dni);
+                        if (!corr) {
+                            System.err.println("Formato del dni incorrecto.\n"
+                                    + "Vuelve a introducirlo");
+                        }
+                    } while (!corr);
+                    cont = 0;
+                    ext = false;
+                    while (!ext) {
+                        if (p[cont].getDni().matches(dni)) {
+                            index = cont;
+                            ext = true;
+                        }
+                        cont++;
+                    }
+                    p[index].getDatos();
+                    break;
+                case 4:
+                    do {
+                        System.out.println("digame el DNI de la pesona a la que se le va a ingresar la nomina");
+                        dni = sc.next();
+                        corr = Persona.comprobarDNI(dni);
+                        if (!corr) {
+                            System.err.println("Formato del dni incorrecto.\n"
+                                    + "Vuelve a introducirlo");
+                        }
+                    } while (!corr);
+                    System.out.println("Introduzca el IBAN de la cuenta bancaria a la que se le va a ingresar la nomina.");
+                    do {
+                        iban = sc.next();
+                        corr = Cuenta.comprobarIBAN(iban);
+                        if (!corr) {
+                            System.err.println("Formato del iban incorrecto.\n"
+                                    + "Vuelve a introducirlo");
+                        }
+                    } while (!corr);
+                    cont = 0;
+                    ext = false;
+                    while (!ext) {
+                        if (p[cont].getDni().matches(dni)) {
+                            index = cont;
+                            ext = true;
+                        }
+                        cont++;
+                    }
+                    System.out.println("Introduzca la nomina a ingresar.");
+                    nomina = sc.nextDouble();
+                    ext = false;
+                    while (!ext) {
+                        if (nomina > 0)
+                            ext = true;
+                        else {
+                            System.out.println("La cantidad a ingresar no puede ser igual o menor a 0.");
+                            ext = false;
+                        }
+                    }
+                    p[index].setNomina(iban, nomina);
+                    break;
+                case 5:
+                    do {
+                        System.out.println("digame el DNI de la pesona a la que se le va a retirar el pago");
+                        dni = sc.next();
+                        corr = Persona.comprobarDNI(dni);
+                        if (!corr) {
+                            System.err.println("Formato del dni incorrecto.\n"
+                                    + "Vuelve a introducirlo");
+                        }
+                    } while (!corr);
+                    System.out.println("Introduzca el IBAN de la cuenta bancaria a la que se le va a retirar pagos.");
+                    do {
+                        iban = sc.next();
+                        corr = Cuenta.comprobarIBAN(iban);
+                        if (!corr) {
+                            System.err.println("Formato del iban incorrecto.\n"
+                                    + "Vuelve a introducirlo");
+                        }
+                    } while (!corr);
+                    cont = 0;
+                    ext = false;
+                    while (!ext) {
+                        if (p[cont].getDni().matches(dni)) {
+                            index = cont;
+                            ext = true;
+                        }
+                        cont++;
+                    }
+                    System.out.println("Introduzca el pago a retirar.");
+                    nomina = sc.nextDouble();
+                    ext = false;
+                    while (!ext) {
+                        if (nomina >= 0)
+                            ext = true;
+                        else {
+                            System.out.println("La cantidad a pagar no puede ser igual o menor a 0.");
+                            ext = false;
+                        }
+                    }
+                    p[index].setPago(iban, nomina);
+                    break;
             }
-        } while (salir == 'N' || salir == 'n');
+            System.out.println("Quieres continuar usando el programa? S/n");
+            salir = sc.next().charAt(0);
+        } while (salir == 'S' || salir == 's');
     }
 
     public static void instanciarPersona(Persona[] p, int i, String dni) {
         p[i] = new Persona(dni);
-    }
-
-    public static void instanciarCuenta(Cuenta c, String iban, double saldo) {
-        c = new Cuenta(iban, saldo);
     }
 
 }
