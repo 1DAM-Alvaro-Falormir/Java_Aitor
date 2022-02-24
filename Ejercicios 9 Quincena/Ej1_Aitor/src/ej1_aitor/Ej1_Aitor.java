@@ -8,7 +8,7 @@ import java.util.Iterator;
 
 /**
  *
- * @author ciber
+ * @author Aitor
  */
 public class Ej1_Aitor {
 

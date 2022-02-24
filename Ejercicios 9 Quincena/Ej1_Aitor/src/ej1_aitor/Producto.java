@@ -6,7 +6,7 @@ package ej1_aitor;
 
 /**
  *
- * @author ciber
+ * @author Aitor
  */
 public class Producto {
     
