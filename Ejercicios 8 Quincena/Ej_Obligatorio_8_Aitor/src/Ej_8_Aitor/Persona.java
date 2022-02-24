@@ -34,7 +34,7 @@ public class Persona {
     public boolean morosa(){
         boolean morosos = false;
         
-        for (int i = 0; i < cuentasBank.length; i++) {
+        for (int i = 0; i < numCuentas; i++) {
             if(this.cuentasBank[i].getSaldo() < 0)
                 morosos = true;
         }
@@ -61,7 +61,7 @@ public class Persona {
     
     public void setNomina(String iban, double nomina){
         for (int i = 0; i < numCuentas; i++) {
-            if(this.cuentasBank[i].getIban().matches(iban)){
+            if(this.cuentasBank[i].getIban().equals(iban)){
                 this.cuentasBank[i].recibirAbonos(nomina);
             }
         }
@@ -69,10 +69,14 @@ public class Persona {
     
     public void setPago(String iban, double pago){
         for (int i = 0; i < numCuentas; i++) {
-            if(this.cuentasBank[i].getIban().matches(iban)){
+            if(this.cuentasBank[i].getIban().equals(iban)){
                 this.cuentasBank[i].pagarRecibos(pago);
             }
         }
+    }
+    
+    public int getNumCuentas(){
+        return numCuentas;
     }
     
 }
