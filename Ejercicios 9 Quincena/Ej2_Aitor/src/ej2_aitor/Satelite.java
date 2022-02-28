@@ -18,7 +18,11 @@ public class Satelite extends Astro{
     }
 
     public Satelite(String nombre, double distanciaPlaneta, double orbitaPlaneta, Planeta mio, double radioEcuatorial, double rotacionMismoEje, double masa, double temperaturaMedia, double gravedad) {
-        super(radioEcuatorial, rotacionMismoEje, masa, temperaturaMedia, gravedad);
+        this.radioEcuatorial = radioEcuatorial;
+        this.rotacionMismoEje = rotacionMismoEje;
+        this.masa = masa;
+        this.temperaturaMedia = temperaturaMedia;
+        this.gravedad = gravedad;
         this.nombre = nombre;
         this.distanciaPlaneta = distanciaPlaneta;
         this.orbitaPlaneta = orbitaPlaneta;
@@ -59,11 +63,65 @@ public class Satelite extends Astro{
     
     @Override
     public void muestra(){
-        super.muestra();
+        System.out.println("- Radio ecuatorial: "+this.radioEcuatorial);
+        System.out.println("- Rotacion sobre su eje: "+this.rotacionMismoEje);
+        System.out.println("- Masa: "+this.masa);
+        System.out.println("- Temperatura media: "+this.temperaturaMedia);
+        System.out.println("- Gravedad: "+this.gravedad);
         System.out.println("- Nombre del satelite: "+this.nombre);
         System.out.println("- Distancia al planeta: "+this.distanciaPlaneta);
         System.out.println("- Orbita al planeta: "+this.orbitaPlaneta);
         System.out.println("- Pertenezco al planeta: "+this.estoyEn);
+    }
+    
+    @Override
+    public double getRadioEcuatorial() {
+        return radioEcuatorial;
+    }
+
+    @Override
+    public void setRadioEcuatorial(double radioEcuatorial) {
+        this.radioEcuatorial = radioEcuatorial;
+    }
+
+    @Override
+    public double getRotacionMismoEje() {
+        return rotacionMismoEje;
+    }
+
+    @Override
+    public void setRotacionMismoEje(double rotacionMismoEje) {
+        this.rotacionMismoEje = rotacionMismoEje;
+    }
+
+    @Override
+    public double getMasa() {
+        return masa;
+    }
+
+    @Override
+    public void setMasa(double masa) {
+        this.masa = masa;
+    }
+
+    @Override
+    public double getTemperaturaMedia() {
+        return temperaturaMedia;
+    }
+
+    @Override
+    public void setTemperaturaMedia(double temperaturaMedia) {
+        this.temperaturaMedia = temperaturaMedia;
+    }
+
+    @Override
+    public double getGravedad() {
+        return gravedad;
+    }
+
+    @Override
+    public void setGravedad(double gravedad) {
+        this.gravedad = gravedad;
     }
     
 }

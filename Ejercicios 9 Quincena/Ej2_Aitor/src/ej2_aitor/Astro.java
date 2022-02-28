@@ -8,70 +8,33 @@ package ej2_aitor;
  *
  * @author ciber
  */
-public class Astro {
+public abstract class Astro {
     protected double radioEcuatorial;
     protected double rotacionMismoEje;
     protected double masa;
     protected double temperaturaMedia;
     protected double gravedad;
 
-    public Astro() {
-    }
+    public abstract double getRadioEcuatorial();
 
-    public Astro(double radioEcuatorial, double rotacionMismoEje, double masa, double temperaturaMedia, double gravedad) {
-        this.radioEcuatorial = radioEcuatorial;
-        this.rotacionMismoEje = rotacionMismoEje;
-        this.masa = masa;
-        this.temperaturaMedia = temperaturaMedia;
-        this.gravedad = gravedad;
-    }
+    public abstract void setRadioEcuatorial(double radioEcuatorial);
 
-    public double getRadioEcuatorial() {
-        return radioEcuatorial;
-    }
+    public abstract double getRotacionMismoEje();
 
-    public void setRadioEcuatorial(double radioEcuatorial) {
-        this.radioEcuatorial = radioEcuatorial;
-    }
+    public abstract void setRotacionMismoEje(double rotacionMismoEje);
 
-    public double getRotacionMismoEje() {
-        return rotacionMismoEje;
-    }
+    public abstract double getMasa();
 
-    public void setRotacionMismoEje(double rotacionMismoEje) {
-        this.rotacionMismoEje = rotacionMismoEje;
-    }
+    public abstract void setMasa(double masa);
 
-    public double getMasa() {
-        return masa;
-    }
+    public abstract double getTemperaturaMedia();
 
-    public void setMasa(double masa) {
-        this.masa = masa;
-    }
+    public abstract void setTemperaturaMedia(double temperaturaMedia);
 
-    public double getTemperaturaMedia() {
-        return temperaturaMedia;
-    }
+    public abstract double getGravedad();
 
-    public void setTemperaturaMedia(double temperaturaMedia) {
-        this.temperaturaMedia = temperaturaMedia;
-    }
-
-    public double getGravedad() {
-        return gravedad;
-    }
-
-    public void setGravedad(double gravedad) {
-        this.gravedad = gravedad;
-    }
+    public abstract void setGravedad(double gravedad);
     
-    public void muestra(){
-        System.out.println("- Radio ecuatorial: "+this.radioEcuatorial);
-        System.out.println("- Rotacion sobre su eje: "+this.rotacionMismoEje);
-        System.out.println("- Masa: "+this.masa);
-        System.out.println("- Temperatura media: "+this.temperaturaMedia);
-        System.out.println("- Gravedad: "+this.gravedad);
-    }
+    public abstract void muestra();
     
 }
