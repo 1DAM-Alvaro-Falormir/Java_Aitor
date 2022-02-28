@@ -13,6 +13,7 @@ import java.util.Iterator;
 public class Ej1_Aitor {
 
     /**
+     * Metodo principal del programa.
      * @param args the command line arguments
      */
     public static void main(String[] args) {
