@@ -18,11 +18,7 @@ public class Planeta extends Astro{
     }
 
     public Planeta(String nombre, double distanciaSol, double orbitaSol, boolean haySatelites, double radioEcuatorial, double rotacionMismoEje, double masa, double temperaturaMedia, double gravedad) {
-        this.radioEcuatorial = radioEcuatorial;
-        this.rotacionMismoEje = rotacionMismoEje;
-        this.masa = masa;
-        this.temperaturaMedia = temperaturaMedia;
-        this.gravedad = gravedad;
+        super(radioEcuatorial, rotacionMismoEje, masa, temperaturaMedia, gravedad);
         this.nombre = nombre;
         this.distanciaSol = distanciaSol;
         this.orbitaSol = orbitaSol;
@@ -74,54 +70,4 @@ public class Planeta extends Astro{
         System.out.println("- Tiene satelites? "+this.haySatelites);
     }
 
-    @Override
-    public double getRadioEcuatorial() {
-        return radioEcuatorial;
     }
-
-    @Override
-    public void setRadioEcuatorial(double radioEcuatorial) {
-        this.radioEcuatorial = radioEcuatorial;
-    }
-
-    @Override
-    public double getRotacionMismoEje() {
-        return rotacionMismoEje;
-    }
-
-    @Override
-    public void setRotacionMismoEje(double rotacionMismoEje) {
-        this.rotacionMismoEje = rotacionMismoEje;
-    }
-
-    @Override
-    public double getMasa() {
-        return masa;
-    }
-
-    @Override
-    public void setMasa(double masa) {
-        this.masa = masa;
-    }
-
-    @Override
-    public double getTemperaturaMedia() {
-        return temperaturaMedia;
-    }
-
-    @Override
-    public void setTemperaturaMedia(double temperaturaMedia) {
-        this.temperaturaMedia = temperaturaMedia;
-    }
-
-    @Override
-    public double getGravedad() {
-        return gravedad;
-    }
-
-    @Override
-    public void setGravedad(double gravedad) {
-        this.gravedad = gravedad;
-    }
-    
-}

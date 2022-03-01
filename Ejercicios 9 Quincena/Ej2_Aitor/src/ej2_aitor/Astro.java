@@ -15,26 +15,56 @@ public abstract class Astro {
     protected double temperaturaMedia;
     protected double gravedad;
 
-    public abstract double getRadioEcuatorial();
+    public Astro() {
+    }
 
-    public abstract void setRadioEcuatorial(double radioEcuatorial);
+    public Astro(double radioEcuatorial, double rotacionMismoEje, double masa, double temperaturaMedia, double gravedad) {
+        this.radioEcuatorial = radioEcuatorial;
+        this.rotacionMismoEje = rotacionMismoEje;
+        this.masa = masa;
+        this.temperaturaMedia = temperaturaMedia;
+        this.gravedad = gravedad;
+    }
 
-    public abstract double getRotacionMismoEje();
+    public double getRadioEcuatorial() {
+        return radioEcuatorial;
+    }
 
-    public abstract void setRotacionMismoEje(double rotacionMismoEje);
+    public void setRadioEcuatorial(double radioEcuatorial) {
+        this.radioEcuatorial = radioEcuatorial;
+    }
 
-    public abstract double getMasa();
+    public double getRotacionMismoEje() {
+        return rotacionMismoEje;
+    }
 
-    public abstract void setMasa(double masa);
+    public void setRotacionMismoEje(double rotacionMismoEje) {
+        this.rotacionMismoEje = rotacionMismoEje;
+    }
 
-    public abstract double getTemperaturaMedia();
+    public double getMasa() {
+        return masa;
+    }
 
-    public abstract void setTemperaturaMedia(double temperaturaMedia);
+    public void setMasa(double masa) {
+        this.masa = masa;
+    }
 
-    public abstract double getGravedad();
+    public double getTemperaturaMedia() {
+        return temperaturaMedia;
+    }
 
-    public abstract void setGravedad(double gravedad);
+    public void setTemperaturaMedia(double temperaturaMedia) {
+        this.temperaturaMedia = temperaturaMedia;
+    }
+    
+    public double getGravedad() {
+        return gravedad;
+    }
+    
+    public void setGravedad(double gravedad) {
+        this.gravedad = gravedad;
+    }
     
     public abstract void muestra();
-    
 }
