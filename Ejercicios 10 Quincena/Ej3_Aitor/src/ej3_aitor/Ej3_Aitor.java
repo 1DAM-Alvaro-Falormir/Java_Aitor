@@ -22,7 +22,7 @@ public class Ej3_Aitor {
         
         for (int i = 0; i < vector.length; i++) {
             try{
-                System.out.print("Introduzca un entero: ");
+                System.out.print("Introduzca un numero real: ");
                 vector[i] = sc.nextDouble();
             }
             catch(InputMismatchException ex){
