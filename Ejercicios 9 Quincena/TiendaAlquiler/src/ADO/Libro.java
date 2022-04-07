@@ -1,9 +1,14 @@
 
 package ADO;
 
+/**
+ * 
+ * @author Aitor
+ */
+
 
 public abstract class Libro extends Articulo {
-    // atrinutos miembro
+    // atributos miembro
     private int numPaginas;
 
     public Libro(int numPaginas, String cod, String nombre, String fecha, 

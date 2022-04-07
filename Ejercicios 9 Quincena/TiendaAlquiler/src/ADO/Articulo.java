@@ -2,6 +2,11 @@ package ADO;
 
 import java.util.ArrayList;
 
+/**
+ * 
+ * @author Aitor
+ */
+
 public abstract class Articulo {
 
     // atributos de clase
