@@ -23,9 +23,9 @@ public class Proyecto2122 {
         ListaArticulos miLista = new ListaArticulos();
         Scanner sc = new Scanner(System.in);
         int op, opart, year, nPaginas, horasDuracion, minutos, nPistas, pegi, dias;
-        String cod, nombre, fecha, resumen, autor, deterioro, format, tapa, sintetiza, tipo, categoria, formatf;
+        String cod, nombre, fecha, resumen, autor, deterioro, format, tapa, sintetiza, tipo, categoria, formatf, comentDeterioro;
         float duracion;
-        boolean ok, deteriorado, formato, sintetizador, formatoFisico;
+        boolean ok, deteriorado, formato, sintetizador, formatoFisico, coment;
 
         do {
             do {
@@ -66,7 +66,6 @@ public class Proyecto2122 {
                             ok = Utilidades.validarPositivo(year);
                         } while (!ok);
                         do {
-                            sc.next();
                             System.out.println("Escriba un resumen del articulo: ");
                             resumen = sc.next();
                             ok = Utilidades.campoVacio(resumen);
@@ -82,9 +81,9 @@ public class Proyecto2122 {
                             deterioro = sc.next();
                             ok = Utilidades.validarSN(deterioro);
                         } while (!ok);
-                        
+
                         deteriorado = deterioro.equalsIgnoreCase("si");
-                        
+
                         do {
                             System.out.println("¿Que clase de Artículo es?");
                             System.out.println("1- LibroImpreso ");
@@ -103,15 +102,14 @@ public class Proyecto2122 {
                                     ok = Utilidades.validarPositivo(nPaginas);
                                 } while (!ok);
 
-                                sc.next();
                                 do {
                                     System.out.println("¿El libro esta en papel o en ebook?");
                                     format = sc.next();
                                     ok = Utilidades.validarFormatoLibro(format);
                                 } while (!ok);
-                                
+
                                 formato = format.equalsIgnoreCase("ebook");
-                                
+
                                 do {
                                     System.out.println("¿Que tipo de tapa tiene, dura o blanda?");
                                     tapa = sc.next();
@@ -120,6 +118,22 @@ public class Proyecto2122 {
 
                                 art = new LibroImpreso(formato, tapa, nPaginas, cod, nombre,
                                         fecha, year, resumen, autor, deteriorado);
+                                if (deteriorado) {
+                                    do {
+                                        System.out.println("¿Le gustaria añadir un comentario sobre la deterioración? Responda SI o NO.");
+                                        comentDeterioro = sc.next();
+                                        ok = Utilidades.validarSN(comentDeterioro);
+                                        coment = comentDeterioro.equalsIgnoreCase("Si");
+                                        if (coment) {
+                                            do {
+                                                System.out.println("Introduzca el comentario.");
+                                                comentDeterioro = sc.next();
+                                                ok = Utilidades.campoVacio(comentDeterioro);
+                                            } while (!ok);
+                                            ok = art.guardaComentario(comentDeterioro);
+                                        }
+                                    } while (!ok);
+                                }
                                 ok = miLista.addArticulo(art);
                                 if (ok) {
                                     System.out.println("Artículo añadido.");
@@ -127,7 +141,6 @@ public class Proyecto2122 {
                                     System.out.println("No se ha podido añadir el LibroImpreso");
                                 }
                                 break;
-
 
                             case 2:
                                 System.out.println("Alta un AudioLibro");
@@ -141,9 +154,9 @@ public class Proyecto2122 {
                                     sintetiza = sc.next();
                                     ok = Utilidades.validarSN(sintetiza);
                                 } while (!ok);
-                                
+
                                 sintetizador = sintetiza.equalsIgnoreCase("si");
-                                
+
                                 do {
                                     System.out.println("¿Cuantas horas tiene de duración?");
                                     horasDuracion = sc.nextInt();
@@ -156,6 +169,22 @@ public class Proyecto2122 {
                                 } while (!ok);
                                 art = new AudioLibro(sintetizador, horasDuracion, horasDuracion,
                                         nPaginas, cod, nombre, fecha, year, resumen, autor, deteriorado);
+                                if (deteriorado) {
+                                    do {
+                                        System.out.println("¿Le gustaria añadir un comentario sobre la deterioración? Responda SI o NO.");
+                                        comentDeterioro = sc.next();
+                                        ok = Utilidades.validarSN(comentDeterioro);
+                                        coment = comentDeterioro.equalsIgnoreCase("Si");
+                                        if (coment) {
+                                            do {
+                                                System.out.println("Introduzca el comentario.");
+                                                comentDeterioro = sc.next();
+                                                ok = Utilidades.campoVacio(comentDeterioro);
+                                            } while (!ok);
+                                            ok = art.guardaComentario(comentDeterioro);
+                                        }
+                                    } while (!ok);
+                                }
                                 ok = miLista.addArticulo(art);
                                 if (ok) {
                                     System.out.println("AudioLibro añadido");
@@ -163,7 +192,6 @@ public class Proyecto2122 {
                                     System.out.println("No se ha podido añadir el AudioLibro");
                                 }
                                 break;
-
 
                             case 3:
                                 System.out.println("Alta artículo musical");
@@ -185,7 +213,22 @@ public class Proyecto2122 {
                                 //Constructor del articulo de Musica: 
                                 art = new Musica(nPistas, duracion, tipo, cod, nombre,
                                         fecha, year, resumen, autor, deteriorado);
-
+                                if (deteriorado) {
+                                    do {
+                                        System.out.println("¿Le gustaria añadir un comentario sobre la deterioración? Responda SI o NO.");
+                                        comentDeterioro = sc.next();
+                                        ok = Utilidades.validarSN(comentDeterioro);
+                                        coment = comentDeterioro.equalsIgnoreCase("Si");
+                                        if (coment) {
+                                            do {
+                                                System.out.println("Introduzca el comentario.");
+                                                comentDeterioro = sc.next();
+                                                ok = Utilidades.campoVacio(comentDeterioro);
+                                            } while (!ok);
+                                            ok = art.guardaComentario(comentDeterioro);
+                                        }
+                                    } while (!ok);
+                                }
                                 ok = miLista.addArticulo(art);
                                 if (ok) {
                                     System.out.println("Artículo de música añadido");
@@ -203,7 +246,6 @@ public class Proyecto2122 {
                                 } while (!ok);
                                 do {
                                     System.out.println("Introduzca la categoria: ");
-                                    sc.next();
                                     categoria = sc.next();
                                     ok = Utilidades.campoVacio(categoria);
                                 } while (!ok);
@@ -218,6 +260,22 @@ public class Proyecto2122 {
                                 art = new VideoJuego(pegi, categoria, categoria,
                                         formatoFisico, cod, nombre, fecha, year,
                                         resumen, autor, deteriorado);
+                                if (deteriorado) {
+                                    do {
+                                        System.out.println("¿Le gustaria añadir un comentario sobre la deterioración? Responda SI o NO.");
+                                        comentDeterioro = sc.next();
+                                        ok = Utilidades.validarSN(comentDeterioro);
+                                        coment = comentDeterioro.equalsIgnoreCase("Si");
+                                        if (coment) {
+                                            do {
+                                                System.out.println("Introduzca el comentario.");
+                                                comentDeterioro = sc.next();
+                                                ok = Utilidades.campoVacio(comentDeterioro);
+                                            } while (!ok);
+                                            ok = art.guardaComentario(comentDeterioro);
+                                        }
+                                    } while (!ok);
+                                }
                                 ok = miLista.addArticulo(art);
                                 if (ok) {
                                     System.out.println("VideoJuego añadido");
@@ -230,6 +288,55 @@ public class Proyecto2122 {
                         break;
 
                     case 2:
+                        if (!miLista.estaVacio()) {
+                            do {
+                                System.out.println("Introduzca el codigo del articulo");
+                                System.out.println("Debe estar formado por tres digitos: ");
+                                cod = sc.next();
+                                ok = Utilidades.validarCOD(cod);
+                                if (!ok) {
+                                    System.err.println("Formato incorrecto.");
+                                }
+                            } while (!ok);
+                            do {
+                                System.out.println("Introduce los días del alquiler.");
+                                dias = sc.nextInt();
+                                ok = Utilidades.validarPositivo(dias);
+                                if (!ok) {
+                                    System.out.println("Formato incorrecto");
+                                }
+                            } while (!ok);
+                            ok = miLista.existeCodArt(cod);
+                            if (ok) {
+                                miLista.mostrarPrecioAlquiler(cod, dias);
+                            } else {
+                                System.out.println("El codigo de articulo no existe.");
+                            }
+                        } else {
+                            System.out.println("No hay ningun articulo\n");
+                        }
+                        break;
+                    case 3:
+                        if (!miLista.estaVacio()) {
+                            do {
+                                System.out.println("Introduce los días del alquiler.");
+                                dias = sc.nextInt();
+                                ok = Utilidades.validarPositivo(dias);
+                                if (!ok) {
+                                    System.out.println("Formato incorrecto");
+                                }
+                            } while (!ok);
+                            miLista.mostrarDatos(dias);
+                        } else {
+                            System.out.println("No hay nigun articulo.\n");
+                        }
+                        break;
+                    case 4:
+                        System.out.println("Gracias por usar nuestro programa.");
+                        System.out.println("Saludos.");
+                        break;
+                    default:
+                        System.out.println("Opcion Equivocada");
                 }
 
             } while (op < 1 || op > 4);

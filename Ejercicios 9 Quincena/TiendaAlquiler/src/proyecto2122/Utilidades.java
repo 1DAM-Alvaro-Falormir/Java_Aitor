@@ -73,8 +73,8 @@ public class Utilidades {
         String Sdia, Smes, Sanyo;
         String separador = "-";
         String s, s1;
-        s = fecha.substring(2);
-        s1 = fecha.substring(5);
+        s = fecha.substring(2,3);
+        s1 = fecha.substring(5,6);
         int dia, mes, anyo, diasFeb;
         Sdia = fecha.substring(0, 2);
         Smes = fecha.substring(3, 5);
@@ -145,7 +145,7 @@ public class Utilidades {
     public static boolean validarFecha1(String fecha) {
         boolean ok = true;
 
-        if (!fecha.matches("\\d{2}-\\d{2}-\\d{4}")) {
+        if (!fecha.matches("\\d{1,2}-\\d{1,2}-\\d{4}")) {
             ok = false;
             System.err.println("Formato de Fecha no valido");
         }
