@@ -40,7 +40,10 @@ public class EjA1_Aitor {
 
     public static void muestraInfoRuta(File ruta) throws FileNotFoundException {
         File[] lista;
-
+        File[] listaDirectorio;
+        File[] listaArchivos;
+        int d = 0, a = 0, cont = 0;
+        boolean salir = false;
         if (ruta.exists()) { //Comprobamos que la ruta existe
             if (ruta.isFile()) { //Comprobamos si la ruta es archivo
                 System.out.println("Nombre: " + ruta.getName());
