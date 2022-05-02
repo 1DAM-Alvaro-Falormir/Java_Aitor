@@ -33,7 +33,7 @@ public class EjA2_Aitor {
                 if (!ruta.equals("")) {
                     do {
                         System.out.println("Quieres ver el tamaño de los archivos y su fecha de la última modificacion? Si/No");
-                        detalles = sc.next();
+                        detalles = sc.nextLine();
                         ok = Utilidades.validarSN(detalles);
                     } while (!ok);
                     info = detalles.equalsIgnoreCase("si");
