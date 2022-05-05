@@ -16,14 +16,8 @@ public class Gato {
     }
 
     public Gato(String nombre, int edad) throws ExpectedNegativeNumberException, ExpectedValidNameException {
-        if (nombre.length() < 3)
-            throw new ExpectedValidNameException(nombre);
-        
-        if (edad < 0)
-            throw new ExpectedNegativeNumberException(edad);
-            
-        this.nombre = nombre;
-        this.edad = edad;
+        setNombre(nombre);
+        setEdad(edad);
         
         
     }
