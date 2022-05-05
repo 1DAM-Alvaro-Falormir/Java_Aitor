@@ -25,17 +25,7 @@ public class Ej6_Aitor {
             gato.setEdad(6);
             gato.setNombre("Tu");
             gato.imprime();
-        }
-        
-        catch(ExpectedNegativeNumberException e){
-            System.out.println("La edad no puede ser negativa");
-        }
-        
-        catch(ExpectedValidNameException ex){
-            System.out.println("El nombre tiene que tener un minimo de tres letras");
-        }
-        
-        try{
+            
             gato2.setEdad(5);
             gato2.setNombre("Trueno");
             gato2.imprime();
